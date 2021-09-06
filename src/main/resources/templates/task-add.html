@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/WJuqzmouTkgf-67W34bA/kisspng-ethereum-classic-blockchain-decentralized-applicat-ethereum-classic-etc-inspires-investment-compani-5c5a6f71196a09.4533405815494306411041.png" type="image/png">
+    <title th:text="${title}" />
+</head>
+<body>
+  <style>
+        body {
+        background-size: cover;
+     background-image: url("https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-12/yaV0YreqWqMtj0JgHncC/dark-blue-green-gradient-4k-i4-1440x900.jpg");
+             }
+.questions_text{
+   position: fixed;
+   left: 90px;
+   top: 105px;
+   color:#16c7c7b7;
+   font-family: 1.8em "Times New Roman", Times, serif;
+}
+.client_text{
+
+   color: #16c7c7b7;
+   font-family: 1.8em "Times New Roman", Times, serif;
+}
+
+.field{
+ border-radius: 10px;
+}
+ #product{
+     position: fixed;
+     left: 300px;
+     top: 100px;
+     width: 550px;
+     color: white;
+     border-radius:10px;
+     padding: 15px;
+     margin: 2px;
+     height: 1px;
+     background-color: transparent;
+ }
+ #product:hover{
+    background-color:#139abf;
+    transform: scale(1.01);
+    transition-duration: .2s;
+ }
+ .client_field{
+    border-radius: 20px;
+    position: fixed;
+    top: 90px;
+    background:#0a0a0a9c;
+      width: 450px;
+      padding: 20px;
+      margin: 15px;
+      height: 500px;
+      opacity:0.5;
+      box-shadow: 5px 5px 5px 5px black;
+      left: 900px;
+
+ }
+ .client_field:hover{
+    transform: translate(5px);
+    opacity: 0.99;
+    transition-duration: .2s;
+ }
+ #mainClientText{
+    color: #0cf73fe1;
+ }
+ #FIO{
+
+ }
+ .field_client{
+   width: 300px;
+   opacity: 0.7;
+   background:transparent;
+   color:white;
+   border-radius: 5px;
+   border-color:white;
+
+ }
+ .field_client:hover{
+   opacity: 0.99;
+   background-color:#139abf;
+    transform: scale(1.01);
+
+ }
+
+ #Detail_problem{
+ background: black;
+ color:white;
+    border-radius:15px;
+    position: fixed;
+     left: 300px;
+     top: 180px;
+     width: 550px;
+     padding: 15px;
+     margin: 2px;
+     height: 300px;
+     opacity: 0.6;
+ }
+ #Detail_problem:hover{
+     opacity: 0.99;
+    transition-duration: .2s;
+     -webkit-font-smoothing: antialiased;
+ }
+ #done{
+ border-radius: 5px;
+ font: bold 1.3em "Times New Roman", Times, serif;
+   float:center;
+    color: white;
+    padding: 20px 50px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    position: fixed;
+     left: 480px;
+     top: 530px;
+    background: transparent;
+    opacity:0.6;
+    border-color:white;
+ }
+ #done:hover{
+  -webkit-font-smoothing: antialiased;
+   transform: scale(1.01);
+   transition-duration: .2s;
+   color: white;
+   background: #11f237f9;
+   opacity: 0.99;
+}
+
+.kom_Text{
+   position: fixed;
+   left: 15px;
+   top: 180px;
+   color: #16c7c7b7;
+   font-family: 1.8em "Times New Roman", Times, serif;
+}
+#slide_in{
+    position: fixed;
+    left: 10px;
+    top: 220px;
+    background:transparent;
+     width: 200px;
+      padding: 20px;
+      margin: 15px;
+      height: 200px;
+      border: 0.5px solid #ded7d7;
+      border-radius: 5px;
+      color:#e0dada;
+}
+#slide_in:hover{
+    background:black;
+    transform:scale(1.01);
+    transition-duration: .2s;
+    color:white;
+}
+
+
+  </style>
+  <header class="bd-header bg-dark py-2 d-flex align-items-stretch border-bottom border-dark">
+      <div class="container-fluid d-flex align-items-center">
+          <h1 class="d-flex align-items-center fs-3 text-white mb-2">
+              <img src="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-20/9J87CZNSI3qQaZotiD79/kisspng-computer-icons-gear-john-s-electric-motors-clip-ar-5b031c8a551ba0.2771364915269305703486.png" width="40" height="32" class="me-3" alt="Работа над заявками">
+              Создание заявки
+          </h1>
+          <a href="http://93.78.36.49:2323/workspace.task.ua/" class="ms-auto link-light" hreflang="ar">Главная</a>
+      </div>
+  </header>
+
+
+      <form action="/workspace.task.ua/send_task"  method="POST">
+      <div  id="problem">
+          <p align="left" class="questions_text">Вопрос связан с продуктом: </p>
+          <input list="product_problem" class="field" type="text" id="product" placeholder="Выберите продукт, с которым связан вопрос клиента" name="product" required>
+          <datalist id = "product_problem">
+              <option value="Акции">
+              <option value="Бонус+">
+              <option value="Билеты">
+              <option value="Банкоматы">
+              <option value="Интернет-карта">
+              <option value="КУ(карта универсальная)">
+              <option value="КДВ(карта для выплат)">
+              <option value="Вопросы VIP-клиентов">
+              <option value="Платежи физ.лиц">
+              <option value="Платежи юр.лиц">
+              <option value="Регулярные платежи">
+              <option value="Поддержка Android">
+              <option value="Поддержка IOS">
+              <option value="Пополнение мобильного">
+              <option value="Нотариальные платежи">
+              <option value="Оплата частями">
+              <option value="ТСО">
+              <option value="Срочные переводы">
+              <option value="SWIFT-платежи">
+              <option value="Юниор-банк">
+              <option value="Другое">
+          </datalist>
+          <textarea id="Detail_problem" name="detail_problem" required="true">
+              Тут опишите вопрос/проблему клиента...
+         </textarea>
+          <button id="done" onclick="Done();">ОТПРАВИТЬ</button>
+      </div>
+
+
+      <div>
+          <fieldset  class="client_field">
+              <p align = "center" id="mainClientText"><b>Заполните информацию по клиенту</b></p>
+              <p align="left" class="client_text">Фамилия: </p>
+              <input  class="field_client" id="surnameInput" type="text" name="surname" required></p>
+              <p align="left" class="client_text">Имя: </p>
+              <input  class="field_client" id="nameInput" type="text" name="name" required></p>
+              <p align="left" class="client_text">Отчество: </p>
+              <input  class="field_client" id="fa-nameInput" type="text" name="father_name" required></p>
+              <p align="left" class="client_text">Телефон: </p>
+              <input  class="field_client" id="mobInput" type="text" name="mob" required></p>
+              <p align="left" class="client_text">Email: </p>
+              <input  class="field_client" id="emailInput" type="email" name="email" required></p>
+          </fieldset>
+      </div>
+
+         <div id="crm">
+          <p class="kom_Text">Способ коммуникации по заявке</p>
+          <fieldset id="slide_in">
+              <div class="form_radio" >
+                  <input id="telephone_chek" type="radio" name="check" value="Телефон" >
+                  <label for="telephone_chek">Телефон</label><p></p>
+                  <input id="Email_chek" type="radio" name="check" value="Email" checked>
+                  <label for="Email_chek">Email</label><p></p>
+                  <input id="viber" type="radio" name="check" value="Viber">
+                  <label for="viber">Viber</label><p></p>
+                  <input id="telegram" type="radio" name="check" value="Telegram">
+                  <label for="telegram">Telegram</label><p></p>
+              </div>
+          </fieldset>
+         </div>
+      </form>
+<script>
+    const email = document.getElementById("emailInput");
+         email.addEventListener("input", function (event) {
+           if (email.validity.typeMismatch) {
+             email.setCustomValidity("Введите корректный email!");
+        } else {
+              email.setCustomValidity("");
+        }
+         });
+</script>
+</body>
+</html>
