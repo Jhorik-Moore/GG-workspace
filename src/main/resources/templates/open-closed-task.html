@@ -213,19 +213,19 @@ button:hover{ transition-duration: .2s;   }
 
 <div th:each="el: ${taskModel}" >
     <label for="text_problem" class="text_problem">Текст проблемы:</label>
-    <textarea id="problem" th:text="${el.detail_problem}" ></textarea>
+    <textarea id="problem" th:text="${el.detail_problem}" disabled ></textarea>
     <label for="remark" class="main_text" id="text_remark" >Заметки:</label>
-    <textarea id="remark" th:text="${el.remark}" placeholder="Примечание / заметки..." name="remark"></textarea>
+    <textarea id="remark" th:text="${el.remark}" placeholder="Примечание / заметки..." name="remark" disabled></textarea>
     <label for="solution" class="text_solution">Решение:</label>
-    <textarea id="solution" name="solution" th:text="${el.solution}" ></textarea>
+    <textarea id="solution" name="solution" th:text="${el.solution}" disabled></textarea>
 </div>
 
 <div>
     <p class="main_text" id="text_btn">Отправить решение в:</p>
-    <button id="SMS" name="button" value="SMS" title="Опция не реализована" >SMS</button>
-    <button id="Email" name="button" value="Email"  >Email</button>
-    <button id="Phone" name="button" value="Phone" title="Опция не реализована" >Звонок</button>
-    <button id="Save" name="button" value="Save" >Сохранить</button>
+    <button id="SMS" name="button" value="SMS" title="Опция не реализована" disabled>SMS</button>
+    <button id="Email" name="button" value="Email"  disabled>Email</button>
+    <button id="Phone" name="button" value="Phone" title="Опция не реализована" disabled>Звонок</button>
+    <button id="Save" name="button" value="Save" disabled>Сохранить</button>
 </div>
 
 <footer>

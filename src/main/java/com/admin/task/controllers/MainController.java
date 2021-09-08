@@ -326,6 +326,7 @@ public class MainController {
                     "********************"+"\r\n"+
                     "С уважением, команда GG-Bank");
             this.emailSender.send(message);
+
         }
         else if (status.equals("Выполнена") && button.equals("Save")){
             remark = "Коммуникация не проведена со статусом заявки 'Выполнена'. Предоставьте ответ инициатору";
