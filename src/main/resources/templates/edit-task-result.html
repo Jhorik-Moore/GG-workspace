@@ -3,12 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
-    <title th:text="${title}" ></title>
-    <link rel="shortcut icon" href="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/WJuqzmouTkgf-67W34bA/kisspng-ethereum-classic-blockchain-decentralized-applicat-ethereum-classic-etc-inspires-investment-compani-5c5a6f71196a09.4533405815494306411041.png" type="image/png">
+    <title th:text="${title}"></title>
+    <link rel="shortcut icon"
+          href="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/WJuqzmouTkgf-67W34bA/kisspng-ethereum-classic-blockchain-decentralized-applicat-ethereum-classic-etc-inspires-investment-compani-5c5a6f71196a09.4533405815494306411041.png"
+          type="image/png">
     <header class="bd-header bg-dark py-2 d-flex align-items-stretch border-bottom border-dark">
         <div class="container-fluid d-flex align-items-center">
             <h1 class="d-flex align-items-center fs-4 text-white mb-2">
-                <img src="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-08-16/kMsFZ7egpA0Xzd1RAPs4/FmC0gdD8qI.png" width="40" height="32" class="me-3" alt="Работа над заявками">
+                <img src="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-08-16/kMsFZ7egpA0Xzd1RAPs4/FmC0gdD8qI.png"
+                     width="40" height="32" class="me-3" alt="Работа над заявками">
                 Редактирование заявки
             </h1>
             <a href="http://93.78.36.49:2323/workspace.task.ua/" class="ms-auto link-light" hreflang="ar">Главная</a>
@@ -16,128 +19,142 @@
 
     </header>
     <style>
- .header {
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- }
- colortext {
-     color: white;
- }
-   #pAnswer{
-     position : fixed;
-     top: 200px;
-   }
-   #done{
-   position: relative;
-   left: 275px;
-   }
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
 
-   #answer{
-     background: #0a0a0af4;
-     border-radius: 20px;
-     position: fixed;
-      width: 650px;
-      padding: 20px;
-      margin: 5px;
-      height: 300px;
-      box-shadow: 5px 5px 5px 5px black;
+        colortext {
+            color: white;
+        }
 
+        #pAnswer {
+            position: fixed;
+            top: 200px;
+        }
 
-   }
+        #done {
+            position: relative;
+            left: 275px;
+        }
 
-  .value{
-       text-align:center;
-       white-space: nowrap;
-       font: normal 1em Times New Roman, Times, serif;
-       overflow: hidden;
-       text-overflow: ellipsis;
-  }
-
- .field {clear:both; text-align:left; line-height:10px; float:left;
-    }
-  label {
-    border-radius: 10px;
-      float:left;
-       width: 270px;
-      padding: 20px;
-      margin: 5px;
-      height: 5px;
-     background-color: #efefef;
-     opacity: 0.2;
-     color: black;
-     font-family: "Times New Roman", Times, serif;
-
-  }
-
- .answer{
-     position: fixed;
-     left:600px;
-     min-width: 5px;
-        min-height: 5px;
-      font: normal 1.5em Arial, Tahome, sans-serif;
-      background: transparent;
-      color: #139abf;
-     line-height:35px;
-
-  }
-  input{
-     float:left;
-     border-radius: 10px;
-     width: 250px;
- padding: 20px;
- margin: 5px;
- height: 5px;
- background-color: #efefef;
- opacity: 0.3;
- color: black;
- }
-button{
-   border-radius:10px;
-   float:center;
-    color: white;
-    padding: 20px 50px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    position: fixed;
-    left:830px;
-    top:470px;
- background: transparent;
- border: 1px solid #ded7d7;
-  opacity: 0.7;
-  -webkit-transition: 1s ease; /* Safari and Chrome */
-    -moz-transition: 1s ease; /* Firefox 4 */
-    -o-transition: 1s ease; /* Opera */
- }
- button:hover{
-  font-size: 17px;
-  transition-duration: .4s;
-  color : white;
-  background: black;
-  box-shadow: 5px 5px 5px #21ded176;
-  opacity: 0.99;
-}
-
-.url{
-  position: fixed;
-  top:320px;
-  left:835px;
-  color: white;
-}
-.url:hover{
-    transform: scale(1.1);
-    transition-duration: .3s;
-    color: white;
-}
-body {
-background-size: cover;
-     background-image: url("https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-12/yaV0YreqWqMtj0JgHncC/dark-blue-green-gradient-4k-i4-1440x900.jpg");
- }
+        #answer {
+            background: #0a0a0af4;
+            border-radius: 20px;
+            position: fixed;
+            width: 650px;
+            padding: 20px;
+            margin: 5px;
+            height: 300px;
+            box-shadow: 5px 5px 5px 5px black;
 
 
- </style>
+        }
+
+        .value {
+            text-align: center;
+            white-space: nowrap;
+            font: normal 1em Times New Roman, Times, serif;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .field {
+            clear: both;
+            text-align: left;
+            line-height: 10px;
+            float: left;
+        }
+
+        label {
+            border-radius: 10px;
+            float: left;
+            width: 270px;
+            padding: 20px;
+            margin: 5px;
+            height: 5px;
+            background-color: #efefef;
+            opacity: 0.2;
+            color: black;
+            font-family: "Times New Roman", Times, serif;
+
+        }
+
+        .answer {
+            position: fixed;
+            left: 600px;
+            min-width: 5px;
+            min-height: 5px;
+            font: normal 1.5em Arial, Tahome, sans-serif;
+            background: transparent;
+            color: #139abf;
+            line-height: 35px;
+
+        }
+
+        input {
+            float: left;
+            border-radius: 10px;
+            width: 250px;
+            padding: 20px;
+            margin: 5px;
+            height: 5px;
+            background-color: #efefef;
+            opacity: 0.3;
+            color: black;
+        }
+
+        button {
+            border-radius: 10px;
+            float: center;
+            color: white;
+            padding: 20px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            position: fixed;
+            left: 830px;
+            top: 470px;
+            background: transparent;
+            border: 1px solid #ded7d7;
+            opacity: 0.7;
+            -webkit-transition: 1s ease; /* Safari and Chrome */
+            -moz-transition: 1s ease; /* Firefox 4 */
+            -o-transition: 1s ease; /* Opera */
+        }
+
+        button:hover {
+            font-size: 17px;
+            transition-duration: .4s;
+            color: white;
+            background: black;
+            box-shadow: 5px 5px 5px #21ded176;
+            opacity: 0.99;
+        }
+
+        .url {
+            position: fixed;
+            top: 320px;
+            left: 845px;
+            color: white;
+        }
+
+        .url:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            transition-duration: .3s;
+            color: white;
+        }
+
+        body {
+            background-size: cover;
+            background-image: url("https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-12/yaV0YreqWqMtj0JgHncC/dark-blue-green-gradient-4k-i4-1440x900.jpg");
+        }
+
+
+    </style>
 </head>
 
 <body style="background-color:#0c0e1cc">
@@ -146,48 +163,48 @@ background-size: cover;
 <hr>
 <div class="main" id="main">
     <div class="menu">
+        <form id="hiddenForm" action="/workspace.task.ua/edit_task/open" method="post" target="_blank">
+            <div class="field">
+                <label for="id">ID ЗАЯВКИ</label>
+                <label id="id"><p class="value" th:text="${task_number}"></p></label>
+                <input type="hidden" name="task_number" th:value="${task_number}"/>
+            </div>
+            <div class='answer'>
+                <form id="answer">
+                    <img src="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/uW2CPZuVCz92RseXZzET/free-png.ru-39-700x700.png"
+                         id="done" width="50" height="50">
+                    <p align="center" id="pAnswer"><b>Заявка(и) успешно отредактирована(ы).<br>
+                        По ссылке ниже отобразится последняя из списка.</b><br></p>
+                </form>
+            </div>
+            <div class="field">
+                <label for="bus">БИЗНЕС</label>
+                <label id="bus"><p class="value" th:text="${task_bus}"></p></label>
+            </div>
 
-        <div class="field">
-            <label for="id">ID ЗАЯВКИ</label>
-            <label  id="id" > <p class="value" th:text="${task_number}"></p></label>
-        </div>
-        <div class='answer'>
-            <form  id="answer">
-                <img src="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/uW2CPZuVCz92RseXZzET/free-png.ru-39-700x700.png"  id="done" width="50" height="50" >
-            <p align = "center" id="pAnswer" ><b>Заявка Успешно отредактирована.<br>Если заявок более 1,<br> по ссылке ниже отобразится последняя из списка.</b></p>
-            </form>
-        </div>
-        <div class="field">
-            <label for="bus">БИЗНЕС</label>
-            <label  id="bus"> <p class="value" th:text="${task_bus}"></p></label>
-        </div>
+            <div class="field">
+                <label for="cat">КАТЕГОРИЯ</label>
+                <label id="cat"><p class="value" th:text="${task_cat}"></p></label>
 
-        <div class="field">
-            <label for="cat">КАТЕГОРИЯ</label>
-            <label  id="cat"> <p class="value" th:text="${task_cat}"></p></label>
+            </div>
+            <div class="field">
+                <label for="codecl">КОД ЗАКРЫТИЯ</label>
+                <label id="codecl"><p class="value" th:text="${task_codecl}"></p></label>
+            </div>
 
-        </div>
-        <div class="field">
-            <label for="codecl">КОД ЗАКРЫТИЯ</label>
-            <label  id="codecl"> <p class="value" th:text="${task_codecl}"></p></label>
-        </div>
-
-        <div class="url">
-            <a href="http://93.78.36.49:2323/workspace.task.ua/edit_task/answer/task_result" target="_blank">ПРОВЕРИТЬ РЕЗУЛЬТАТ</a>
-        </div>
-        <div class="field">
-            <label for="stat">СТАТУС ЗАЯВКИ</label>
-            <label  id="stat"> <p class="value" th:text="${task_stat}"></p></p></label>
-        </div>
-
-        <div>
-            <button onclick="main();">НА ГЛАВНУЮ</button>
-        </div>
-        <div class="field">
-            <label for="hard">СЛОЖНОСТЬ</label>
-            <label  id="hard"> <p class="value" th:text="${task_hard}"></p></label>
-        </div>
-
+            <div class="url"
+                 onclick='document.getElementById("hiddenForm").submit();'
+                 th:text="${task_number}">
+            </div>
+            <div class="field">
+                <label for="stat">СТАТУС ЗАЯВКИ</label>
+                <label id="stat"><p class="value" th:text="${task_stat}"></p></p></label>
+            </div>
+            <div class="field">
+                <label for="hard">СЛОЖНОСТЬ</label>
+                <label id="hard"><p class="value" th:text="${task_hard}"></p></label>
+            </div>
+        </form>
     </div>
     <div class="content" id="content">
     </div>
@@ -195,22 +212,16 @@ background-size: cover;
 
 
 <script>
-        /*var id = document.getElementById("id").value.trim();
-        var bus = document.getElementById("bus").value.trim();
-        var cat = document.getElementById("cat").value.trim();
-        var codecl = document.getElementById("codecl").value.trim();
-        var stat = document.getElementById("stat").value.trim();
-        var hard = document.getElementById("hard").value.trim();
-        var solcl = document.getElementById("solcl").value.trim();
-        var sol = document.getElementById("sol").value.trim();
-        var rem = document.getElementById("rem").value.trim();*/
+    // window.onload = function() {
+    //     let resultText = `<b>Заявка успешно отредактирована!</b><br>`;
+    //     if (document.getElementById('id').getAttribute('input').length > 10) {
+    //         resultText = `<b>Заявки успешно отредактированы.<br> ` +
+    //             `По ссылке ниже отобразится последняя из списка.</b><br>`
+    //     }
+    //     document.getElementById('pAnswer').innerText = resultText;
+    // }
 
-
-   function main() {
-
-    window.location='http://93.78.36.49:2323/workspace.task.ua/';
- }
- </script>
+</script>
 
 </body>
 </html>
