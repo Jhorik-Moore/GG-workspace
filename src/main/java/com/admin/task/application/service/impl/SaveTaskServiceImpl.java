@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -63,7 +64,8 @@ public class SaveTaskServiceImpl
         waitClose.start();
     }
 
-    private void sendEmailMessageDone(SaveTaskRequestDto dto) {
+    @Async
+    public void sendEmailMessageDone(SaveTaskRequestDto dto) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(dto.getEmail());
         message.setSubject(dto.getProduct());
