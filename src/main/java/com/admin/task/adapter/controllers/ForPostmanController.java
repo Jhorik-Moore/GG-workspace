@@ -1,20 +1,19 @@
 package com.admin.task.adapter.controllers;
 
-import com.admin.task.domain.model.entity.Task;
 import com.admin.task.application.repository.TaskModelRepository;
+import com.admin.task.domain.model.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /*Controller not used in app. Only for Postman usage*/
-@Controller
+@RestController
+@RequestMapping("/workspace.task.ua")
 public class ForPostmanController {
 
     @Autowired
@@ -27,7 +26,7 @@ public class ForPostmanController {
             answer.put("result",result);
         }
 
-    @GetMapping("/workspace.task.ua/tasks/{phone}")
+    @GetMapping("/tasks/{phone}")
     public ResponseEntity<?> findByPhone(@PathVariable(name = "phone") String phone) {
         List<Task> tasks = taskMRepository.findByPhone(phone);
         if (!tasks.isEmpty()) {
@@ -38,7 +37,7 @@ public class ForPostmanController {
 
     }
 
-    @GetMapping("/workspace.task.ua/task/{product}")
+    @GetMapping("/task/{product}")
     public ResponseEntity<?> findByProduct(@PathVariable(name = "product") String product) {
         List<Task> tasks = taskMRepository.findByProduct(product);
         if (!tasks.isEmpty()) {
@@ -48,7 +47,7 @@ public class ForPostmanController {
               return new ResponseEntity<>(answer,HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/workspace.task.ua/add_task")
+    @PostMapping("/add_task")
     public ResponseEntity<?> add_task(@RequestBody Task payload){
         try {
             taskMRepository.save(payload);
@@ -60,7 +59,7 @@ public class ForPostmanController {
         }
 
     }
-    @PostMapping("/workspace.task.ua/delete/{phone}")
+    @PostMapping("/delete/{phone}")
     public ResponseEntity<?> deleteByPhone(@PathVariable(name="phone") String phone){
         try {
             taskMRepository.deleteByPhone(phone);
