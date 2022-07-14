@@ -3,219 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
-    <link rel="shortcut icon" href="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/WJuqzmouTkgf-67W34bA/kisspng-ethereum-classic-blockchain-decentralized-applicat-ethereum-classic-etc-inspires-investment-compani-5c5a6f71196a09.4533405815494306411041.png" type="image/png">
+    <link rel="shortcut icon"
+          href="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/WJuqzmouTkgf-67W34bA/kisspng-ethereum-classic-blockchain-decentralized-applicat-ethereum-classic-etc-inspires-investment-compani-5c5a6f71196a09.4533405815494306411041.png"
+          type="image/png">
 </head>
 <body>
 
 <style>
-body{ background: #d4d6d5;}
-#product{
-   text-align:center;
-   font-size: 12pt bold;
-}
-#sidebarMenu{
-text-indent:10px;
-}
-.main_text{
-font: bold 0.95em Arial, Tahome, sans-serif;
-margin-bottom: 5px;
-}
-input{border-radius:5px;}
-.select{
-width:300px;
-background: #cfcfcf;
-}
- #problem{position: absolute;
-    background:#e3e8e8;width: 1000px;
-    height:150px;
-    top: 80px; left: 370px;
+    body {
+        background: #d4d6d5;
     }
-    textarea{
-    border-radius:15px;
-    border:1px inset #afb3b3;
-    margin: auto;
-    }
-    .text_problem{
-    font: bold 0.95em Arial, Tahome, sans-serif;
-    margin-bottom: 3px;position: absolute;left:370px;
-    top:60px;
-    }
-    .text_solution{ position: absolute;
-    font: bold 0.95em Arial, Tahome, sans-serif;
-    margin-bottom: 3px;
-    top:380px; left: 370px;
-    }
-    #solution{
-    position: absolute; left:370px;
-    background:#e3e8e8; top:400px;
-    width: 1000px; height:150px;
-            margin: auto;
-    }
-    #remark{
-    position: absolute; left:370px; background:#e3e8e8; top:260px;
-    width: 1000px; height:100px;
-            margin: auto;
-    }
-    #text_remark{
-      margin-bottom: 3px; position: absolute; left:370px;
-    top:240px;
-    }
-    #text_btn{ position:absolute; top:610px; left:370px;}
 
-    button{
-    width:100px; height:30px; border-radius:5px;
-    position:absolute; top:600px; color: white;
-    border-color:transparent;
+    #product {
+        text-align: center;
+        font-size: 12pt bold;
     }
-button:hover{ transition-duration: .2s;   }
- #Email{  left:550px; background:#fa0718; }
- #SMS{  left:660px; background:#d3f207f3;}
- #Phone{  left:770px; background:#0ccf5af3; }
-#Save{  left:1250px; background:#0ccf5af3; }
- #Save:hover{   background:#05690fd5; }
- #Phone:hover{   background:#05690fd5; }
- #SMS:hover{   background:#8c8f04; }
- #Email:hover{  background:#8f0404; }
-#task_number{background:transparent; color:transparent;}
- </style>
-    <header th:each="el: ${taskModel}" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2.5 me-0 px-4" href="#" th:text="'&#x2116; '+${el.task_number}"></a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <input name="task_number" id="task_number" th:value="${el.task_number}">
-        </button>
-        <input disabled class="form-control form-control-dark w-70" id="product" type="text" aria-label="Search" th:value="${el.product}">
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="http://localhost:2323/workspace.task.ua/" hreflang="ar">Главная</a>
-            </div>
-        </div>
-    </header>
-    <nav style="max-width:350px;" th:each="el: ${taskModel}" id="sidebarMenu" class="col-md-6 col-lg-3 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <p class="main_text"  >Дата создания</p>
-                    <p  th:text="${el.date_time}"></p>
-                <li class="border-top my-3"></li>
-                <li class="mb-1">
-                    <p class="main_text" >ФИО клиента</p>
-                    <p  th:text="${el.surname}+' '+${el.name}+' '+${el.father_name}"></p>
-                    <p class="main_text" >Телефон</p>
-                    <p  th:text="${el.mob}"></p>
-                    <p  class="main_text">Email</p>
-                    <p  th:text="${el.email}"></p>
-                    <p  class="main_text">Канал коммуникации</p>
-                    <p  th:text="${el.check}"></p>
-                <li class="border-top my-3"></li>
-                <li class="mb-1">
-                    <p class="main_text" >Стасус заявки</p>
-                    <div>
-                        <input class="select"  list="status" name="status" th:value="${el.status}" disabled >
-                        <datalist id="status">
-                            <option value="Новая">
-                            <option value="В работе">
-                            <option value="Выполнена">
-                            <option value="Закрыта">
-                        </datalist>
-                    </div>
-                    <br>
-                    <p class="main_text" >Сложность</p>
-                    <div>
-                        <input class="select"  list="hard" name="hard" th:value="${el.hard}" disabled >
-                        <datalist id="hard">
-                            <option value="Редактирование данных">Редактирование данных</option>
-                            <option value="Консультация">Консультация</option>
-                            <option value="Техническая проблема">Техническая проблема</option>
-                            <option value="Технологическая недоработка">Технологическая недоработка</option>
-                            <option value="Ордер на поддержку">Ордер на поддержку</option>
-                            <option value="Претензия одобрена">Претензия одобрена</option>
-                            <option value="В претензии отказано">В претензии отказано</option>
-                        </datalist>
-                        </input>
-                    </div>
-                    <br>
-                    <p class="main_text" >Категория</p>
-                    <div>
-                        <input class="select"  list="category" name="category" th:value="${el.category}" disabled>
-                        <datalist id="category">
-                            <option value="Инцидент">Инцидент</option>
-                            <option value="Запрос на информацию">Запрос на информацию</option>
-                            <option value="Жалоба">Жалоба</option>
-                            <option value="Решено с привлечением бизнеса">Решено с привлечением бизнеса</option>
-                            <option value="Инцидент по вине банка">Инцидент по вине банка</option>
-                        </datalist>
-                        </input>
-                    </div>
-                    <br>
-                    <p class="main_text" >Бизнес</p>
-                    <div>
-                        <input class="select"  list="business" name="business" th:value="${el.business}" disabled>
-                        <datalist id="business">
-                            <option value="Продукты МСБ">Продукты МСБ</option>
-                            <option value="Кредитные карты">Кредитные карты</option>
-                            <option value="Другое">Другое</option>
-                            <option value="Общая консультация">Общая консультация</option>
-                            <option value="VIP-бизнес">VIP-бизнес</option>
-                            <option value="Информационные технологии">Информационные технологии</option>
-                            <option value="Центр электронного бизнеса">Центр электронного бизнеса</option>
-                            <option value="Бизнес индивидуальных VIP клиентов">Бизнес индивидуальных VIP клиентов</option>
-                            <option value="Ипотечный бизнес">Ипотечный бизнес</option>
-                            <option value="Малый и средний бизнес">Малый и средний бизнес</option>
-                            <option value="Оплата Частями">Оплата Частями</option>
-                            <option value="ТСО">ТСО</option>
-                            <option value="Центр страхового бизнеса">Центр страхового бизнеса</option>
-                            <option value="Центр продажи билетов">Центр продажи билетов</option>
-                            <option value="Бизнес платежей и переводов">Бизнес платежей и переводов</option>
-                            <option value="Swift переводы">Swift переводы</option>
-                        </datalist>
-                        </input>
-                    </div>
-                    <br>
-                    <p class="main_text" >Код закрытия</p>
-                    <div>
-                        <input class="select"  list="code_close" name="code_close" th:value="${el.code_close}" disabled>
-                        <datalist id="code_close">
-                            <option value="Неактуальный вопрос">Неактуальный вопрос</option>
-                            <option value="Повторное обращение (успешный звонок)">Повторное обращение (успешный звонок)</option>
-                            <option value="Коммуникация не требуется">Коммуникация не требуется</option>
-                            <option value="Коммуникация по звонку">Коммуникация по звонку</option>
-                            <option value="Повторное обращение">Повторное обращение</option>
-                            <option value="Заявка обработана">Заявка обработана</option>
-                            <option value="Вопрос снят пользователем">Вопрос снят пользователем</option>
-                            <option value="Массовая проблема">Массовая проблема</option>
-                            <option value="Исправлено">Исправлено</option>
-                            <option value="Не возможно исправить">Не возможно исправить</option>
-                            <option value="Необоснованный возврат">Необоснованный возврат</option>
-                            <option value="Выставлен контроль">Выставлен контроль</option>
-                            <option value="Уточнение данных">Уточнение данных</option>
-                            <option value="Отказ">Отказ</option>
-                            <option value="Решено">Решено</option>
-                            <option value="Нет решения">Нет решения</option>
-                            <option value="Невозможно воспроизвести">Невозможно воспроизвести</option>
-                            <option value="Повторное обращение (недозвон)">Повторное обращение (недозвон)</option>
-                            <option value="Успешный звoнoк клиенту">Успешный звoнoк клиенту</option>
-                            <option value="С привлечением специалистов бизнеса/направлений">С привлечением специалистов бизнеса/направлений</option>
-                            <option value="Отправлено SMS">Отправлено SMS</option>
-                            <option value="Решена - Проблема не подтверждена">Решена - Проблема не подтверждена</option>
-                            <option value="Недозвон">Недозвон</option>
-                        </datalist>
-                        </input>
-                    </div>
-                </li>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
-<div th:each="el: ${taskModel}" >
+    #sidebarMenu {
+        text-indent: 10px;
+    }
+
+    .main_text {
+        font: bold 0.95em Arial, Tahome, sans-serif;
+        margin-bottom: 5px;
+    }
+
+    input {
+        border-radius: 5px;
+    }
+
+    .select {
+        width: 300px;
+        background: #cfcfcf;
+    }
+
+    #problem {
+        position: absolute;
+        background: #e3e8e8;
+        width: 1000px;
+        height: 150px;
+        top: 80px;
+        left: 370px;
+    }
+
+    textarea {
+        border-radius: 15px;
+        border: 1px inset #afb3b3;
+        margin: auto;
+    }
+
+    .text_problem {
+        font: bold 0.95em Arial, Tahome, sans-serif;
+        margin-bottom: 3px;
+        position: absolute;
+        left: 370px;
+        top: 60px;
+    }
+
+    .text_solution {
+        position: absolute;
+        font: bold 0.95em Arial, Tahome, sans-serif;
+        margin-bottom: 3px;
+        top: 380px;
+        left: 370px;
+    }
+
+    #solution {
+        position: absolute;
+        left: 370px;
+        background: #e3e8e8;
+        top: 400px;
+        width: 1000px;
+        height: 150px;
+        margin: auto;
+    }
+
+    #remark {
+        position: absolute;
+        left: 370px;
+        background: #e3e8e8;
+        top: 260px;
+        width: 1000px;
+        height: 100px;
+        margin: auto;
+    }
+
+    #text_remark {
+        margin-bottom: 3px;
+        position: absolute;
+        left: 370px;
+        top: 240px;
+    }
+
+    #text_btn {
+        position: absolute;
+        top: 610px;
+        left: 370px;
+    }
+
+    button {
+        width: 100px;
+        height: 30px;
+        border-radius: 5px;
+        position: absolute;
+        top: 600px;
+        color: white;
+        border-color: transparent;
+    }
+
+    button:hover {
+        transition-duration: .2s;
+    }
+
+    #Email {
+        left: 550px;
+        background: #fa0718;
+    }
+
+    #SMS {
+        left: 660px;
+        background: #d3f207f3;
+    }
+
+    #Phone {
+        left: 770px;
+        background: #0ccf5af3;
+    }
+
+    #Save {
+        left: 1250px;
+        background: #0ccf5af3;
+    }
+
+    #Save:hover {
+        background: #05690fd5;
+    }
+
+    #Phone:hover {
+        background: #05690fd5;
+    }
+
+    #SMS:hover {
+        background: #8c8f04;
+    }
+
+    #Email:hover {
+        background: #8f0404;
+    }
+
+    #task_number {
+        background: transparent;
+        color: transparent;
+    }
+</style>
+<header th:each="el: ${taskModel}" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2.5 me-0 px-4" href="#" th:text="'&#x2116; '+${el.task_number}"></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <input name="task_number" id="task_number" th:value="${el.task_number}">
+    </button>
+    <input disabled class="form-control form-control-dark w-70" id="product" type="text" aria-label="Search"
+           th:value="${el.product}">
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="http://localhost:2323/workspace.task.ua/" hreflang="ar">Главная</a>
+        </div>
+    </div>
+</header>
+<nav style="max-width:350px;" th:each="el: ${taskModel}" id="sidebarMenu"
+     class="col-md-6 col-lg-3 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3">
+        <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+                <p class="main_text">Дата создания</p>
+                <p th:text="${el.date_time}"></p>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+                <p class="main_text">ФИО клиента</p>
+                <p th:text="${el.surname}+' '+${el.name}+' '+${el.father_name}"></p>
+                <p class="main_text">Телефон</p>
+                <p th:text="${el.mob}"></p>
+                <p class="main_text">Email</p>
+                <p th:text="${el.email}"></p>
+                <p class="main_text">Канал коммуникации</p>
+                <p th:text="${el.check}"></p>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+                <p class="main_text">Стасус заявки</p>
+                <div>
+                    <input class="select" list="status" name="status" th:value="${el.status}" disabled>
+                    <datalist id="status">
+                        <option value="Новая">
+                        <option value="В работе">
+                        <option value="Выполнена">
+                        <option value="Закрыта">
+                    </datalist>
+                </div>
+                <br>
+                <p class="main_text">Сложность</p>
+                <div>
+                    <input class="select" list="hard" name="hard" th:value="${el.hard}" disabled>
+                    <datalist id="hard">
+                        <option value="Редактирование данных">Редактирование данных</option>
+                        <option value="Консультация">Консультация</option>
+                        <option value="Техническая проблема">Техническая проблема</option>
+                        <option value="Технологическая недоработка">Технологическая недоработка</option>
+                        <option value="Ордер на поддержку">Ордер на поддержку</option>
+                        <option value="Претензия одобрена">Претензия одобрена</option>
+                        <option value="В претензии отказано">В претензии отказано</option>
+                    </datalist>
+                    </input>
+                </div>
+                <br>
+                <p class="main_text">Категория</p>
+                <div>
+                    <input class="select" list="category" name="category" th:value="${el.category}" disabled>
+                    <datalist id="category">
+                        <option value="Инцидент">Инцидент</option>
+                        <option value="Запрос на информацию">Запрос на информацию</option>
+                        <option value="Жалоба">Жалоба</option>
+                        <option value="Решено с привлечением бизнеса">Решено с привлечением бизнеса</option>
+                        <option value="Инцидент по вине банка">Инцидент по вине банка</option>
+                    </datalist>
+                    </input>
+                </div>
+                <br>
+                <p class="main_text">Бизнес</p>
+                <div>
+                    <input class="select" list="business" name="business" th:value="${el.business}" disabled>
+                    <datalist id="business">
+                        <option value="Продукты МСБ">Продукты МСБ</option>
+                        <option value="Кредитные карты">Кредитные карты</option>
+                        <option value="Другое">Другое</option>
+                        <option value="Общая консультация">Общая консультация</option>
+                        <option value="VIP-бизнес">VIP-бизнес</option>
+                        <option value="Информационные технологии">Информационные технологии</option>
+                        <option value="Центр электронного бизнеса">Центр электронного бизнеса</option>
+                        <option value="Бизнес индивидуальных VIP клиентов">Бизнес индивидуальных VIP клиентов</option>
+                        <option value="Ипотечный бизнес">Ипотечный бизнес</option>
+                        <option value="Малый и средний бизнес">Малый и средний бизнес</option>
+                        <option value="Оплата Частями">Оплата Частями</option>
+                        <option value="ТСО">ТСО</option>
+                        <option value="Центр страхового бизнеса">Центр страхового бизнеса</option>
+                        <option value="Центр продажи билетов">Центр продажи билетов</option>
+                        <option value="Бизнес платежей и переводов">Бизнес платежей и переводов</option>
+                        <option value="Swift переводы">Swift переводы</option>
+                    </datalist>
+                    </input>
+                </div>
+                <br>
+                <p class="main_text">Код закрытия</p>
+                <div>
+                    <input class="select" list="code_close" name="code_close" th:value="${el.code_close}" disabled>
+                    <datalist id="code_close">
+                        <option value="Неактуальный вопрос">Неактуальный вопрос</option>
+                        <option value="Повторное обращение (успешный звонок)">Повторное обращение (успешный звонок)
+                        </option>
+                        <option value="Коммуникация не требуется">Коммуникация не требуется</option>
+                        <option value="Коммуникация по звонку">Коммуникация по звонку</option>
+                        <option value="Повторное обращение">Повторное обращение</option>
+                        <option value="Заявка обработана">Заявка обработана</option>
+                        <option value="Вопрос снят пользователем">Вопрос снят пользователем</option>
+                        <option value="Массовая проблема">Массовая проблема</option>
+                        <option value="Исправлено">Исправлено</option>
+                        <option value="Не возможно исправить">Не возможно исправить</option>
+                        <option value="Необоснованный возврат">Необоснованный возврат</option>
+                        <option value="Выставлен контроль">Выставлен контроль</option>
+                        <option value="Уточнение данных">Уточнение данных</option>
+                        <option value="Отказ">Отказ</option>
+                        <option value="Решено">Решено</option>
+                        <option value="Нет решения">Нет решения</option>
+                        <option value="Невозможно воспроизвести">Невозможно воспроизвести</option>
+                        <option value="Повторное обращение (недозвон)">Повторное обращение (недозвон)</option>
+                        <option value="Успешный звoнoк клиенту">Успешный звoнoк клиенту</option>
+                        <option value="С привлечением специалистов бизнеса/направлений">С привлечением специалистов
+                            бизнеса/направлений
+                        </option>
+                        <option value="Отправлено SMS">Отправлено SMS</option>
+                        <option value="Решена - Проблема не подтверждена">Решена - Проблема не подтверждена</option>
+                        <option value="Недозвон">Недозвон</option>
+                    </datalist>
+                    </input>
+                </div>
+            </li>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div th:each="el: ${taskModel}">
     <label for="text_problem" class="text_problem">Текст проблемы:</label>
-    <textarea id="problem" th:text="${el.detail_problem}" disabled ></textarea>
-    <label for="remark" class="main_text" id="text_remark" >Заметки:</label>
-    <textarea id="remark" th:text="${el.remark}" placeholder="Примечание / заметки..." name="remark" disabled></textarea>
+    <textarea id="problem" th:text="${el.detail_problem}" disabled></textarea>
+    <label for="remark" class="main_text" id="text_remark">Заметки:</label>
+    <textarea id="remark" th:text="${el.remark}" placeholder="Примечание / заметки..." name="remark"
+              disabled></textarea>
     <label for="solution" class="text_solution">Решение:</label>
     <textarea id="solution" name="solution" th:text="${el.solution}" disabled></textarea>
 </div>
@@ -223,13 +309,14 @@ button:hover{ transition-duration: .2s;   }
 <div>
     <p class="main_text" id="text_btn">Отправить решение в:</p>
     <button id="SMS" name="button" value="SMS" title="Опция не реализована" disabled>SMS</button>
-    <button id="Email" name="button" value="Email"  disabled>Email</button>
+    <button id="Email" name="button" value="Email" disabled>Email</button>
     <button id="Phone" name="button" value="Phone" title="Опция не реализована" disabled>Звонок</button>
     <button id="Save" name="button" value="Save" disabled>Сохранить</button>
 </div>
 
 <footer>
-    <p align="center" style="color:#dce0e0b6; background:black;height:50px;top:5px;"><b>GG-Workspace</b> @ Copyright 2021</p>
+    <p align="center" style="color:#dce0e0b6; background:black;height:50px;top:5px;"><b>GG-Workspace</b> @ Copyright
+        2021</p>
 </footer>
 </body>
 </html>
