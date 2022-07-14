@@ -36,6 +36,7 @@ public class SearchTaskServiceImpl
             model.addAttribute("rows", taskList.size());
             model.addAttribute("taskModel", taskList);
         } else {
+            model.addAttribute("rows", 0);
             model.addAttribute("Result", EMPTY_TASK_LIST);
         }
 
