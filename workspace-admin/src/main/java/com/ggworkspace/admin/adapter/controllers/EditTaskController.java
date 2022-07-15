@@ -1,6 +1,7 @@
 package com.ggworkspace.admin.adapter.controllers;
 
 import com.ggworkspace.admin.application.service.EditTaskService;
+import com.ggworkspace.admin.application.service.PermissionService;
 import com.ggworkspace.admin.domain.request.dto.EditTaskRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 @PreAuthorize("isAuthenticated() && hasAuthority('edit')")
@@ -18,12 +21,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class EditTaskController {
 
     private final EditTaskService editTaskService;
+    private final PermissionService permissionService;
+    private static final String EDIT_TASK = "edit";
 
     //Открываем страницу редактирования заявки ***********************************************
     @GetMapping
-    public String getEditTask(Model model) {
+    public String getEditTask(Model model, Principal principal) {
         model.addAttribute("title", "Редактирование заявки");
-        return "edit-task";
+        return permissionService
+                .inDepthVerification(EDIT_TASK, principal);
     }
 
     //Сохраняем изменения  ********************************
