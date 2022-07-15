@@ -3,13 +3,15 @@ package com.ggworkspace.admin.adapter.controllers;
 import com.ggworkspace.admin.application.service.CreateTaskService;
 import com.ggworkspace.admin.domain.request.dto.CreateTaskRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/workspace.task.ua/send_task")
 @RequiredArgsConstructor
+@PreAuthorize("isAuthenticated() && hasAuthority('add')")
+@RequestMapping("/workspace.task.ua/send_task")
 public class CreateTaskController {
 
     private final CreateTaskService createTaskService;

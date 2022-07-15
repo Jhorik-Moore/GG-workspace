@@ -2,6 +2,7 @@ package com.ggworkspace.admin.adapter.controllers;
 
 import com.ggworkspace.admin.application.service.SearchTaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
+@PreAuthorize("isAuthenticated() && hasAuthority('search')")
 @RequestMapping("/workspace.task.ua/search_task")
 public class SearchTaskController {
 

@@ -12,4 +12,10 @@ public class GGBankController {
     public String openClientBank(Model model) {
         return "site-form";
     }
+
+    //адресуем на стартовую
+    @GetMapping
+    public String openStart(Model model) {
+        return "redirect:/workspace.task.ua";
+    }
 }

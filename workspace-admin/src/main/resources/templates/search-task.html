@@ -15,7 +15,7 @@
         position: absolute;
         left: 120px;
         top: 110px;
-        color: #a6a6a6;
+        color: white;
         font-family: 1.8em "Times New Roman", Times, serif;
         font-size: 12pt;
     }
@@ -136,13 +136,14 @@
             Журнал заявок
         </h1>
         <form action="/workspace.task.ua/search_task/find" method="GET">
-            <button id="update">Обновить</button>
+            <button id="update">Показать все</button>
         </form>
         <a href="http://localhost:2323/workspace.task.ua/" class="ms-auto link-light" hreflang="ar">Главная</a>
     </div>
 
 </header>
-<body>
+
+<body style="background-color:#5F6C6A">
 <form action="/workspace.task.ua/search_task/result" method="POST">
     <p align="left" class="text">Фильтр поиска</p>
     <div id="filter">

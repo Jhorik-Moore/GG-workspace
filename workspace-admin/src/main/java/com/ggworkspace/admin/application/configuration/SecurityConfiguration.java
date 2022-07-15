@@ -4,6 +4,7 @@ import com.ggworkspace.admin.domain.model.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,8 +16,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration
-        extends WebSecurityConfigurerAdapter {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Value("${spring.security.conf.admin.username}")
     private String userNameAdmin;
@@ -34,8 +35,6 @@ public class SecurityConfiguration
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/gg-bank.ua").permitAll()
-                .antMatchers("/workspace.task.ua").hasAnyRole(Role.ADMIN.name(), Role.OPER.name())
-                .antMatchers( "/workspace.task.ua/edit_task/**").hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -49,12 +48,12 @@ public class SecurityConfiguration
                 User.builder()
                         .username(userNameAdmin)
                         .password(passwordEncoder().encode(passwordAdmin))
-                        .roles(Role.ADMIN.name())
+                        .authorities(Role.ADMIN.getAuthorities())
                         .build(),
                 User.builder()
                         .username(userNameOper)
                         .password(passwordEncoder().encode(passwordOper))
-                        .roles(Role.OPER.name())
+                        .authorities(Role.OPER.getAuthorities())
                         .build()
         );
     }
