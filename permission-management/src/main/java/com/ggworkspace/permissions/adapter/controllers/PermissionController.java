@@ -2,7 +2,7 @@ package com.ggworkspace.permissions.adapter.controllers;
 
 import com.ggworkspace.permissions.application.service.PermissionService;
 import com.ggworkspace.permissions.domain.dto.EmpoyeeRequestDto;
-import com.ggworkspace.permissions.domain.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.Employee;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class PermissionController {
 
     @GetMapping("/{login}")
     @ResponseStatus(HttpStatus.OK)
-    public Employee getByLogin(@PathVariable String login) {
+    public Optional<Employee> getByLogin(@PathVariable String login) {
         return permissionService.getPermission(login);
     }
 

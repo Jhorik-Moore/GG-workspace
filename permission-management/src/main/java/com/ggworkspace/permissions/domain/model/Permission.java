@@ -1,4 +1,4 @@
-package com.ggworkspace.admin.domain.model;
+package com.ggworkspace.permissions.domain.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

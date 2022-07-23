@@ -1,13 +1,14 @@
 package com.ggworkspace.permissions.application.service;
 
 import com.ggworkspace.permissions.domain.dto.EmpoyeeRequestDto;
-import com.ggworkspace.permissions.domain.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PermissionService {
 
-    Employee getPermission(String login);
+    Optional<Employee> getPermission(String login);
 
     List<Employee> getAll();
 

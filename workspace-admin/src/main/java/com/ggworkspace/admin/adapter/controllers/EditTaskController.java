@@ -5,14 +5,13 @@ import com.ggworkspace.admin.application.service.PermissionService;
 import com.ggworkspace.admin.domain.request.dto.EditTaskRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,22 +21,20 @@ public class EditTaskController {
 
     private final EditTaskService editTaskService;
     private final PermissionService permissionService;
-    private static final String EDIT_TASK = "edit";
 
-    //Открываем страницу редактирования заявки ***********************************************
     @GetMapping
-    public String getEditTask(Model model, Principal principal) {
+    public String getEditTask(Model model,
+                              Authentication authentication) {
         model.addAttribute("title", "Редактирование заявки");
         return permissionService
-                .inDepthVerification(EDIT_TASK, principal);
+                .inDepthVerificationEdit(authentication);
     }
 
-    //Сохраняем изменения  ********************************
     @PostMapping
     public String taskEditSave(@RequestParam String task_numbers, @RequestParam String business,
-                           @RequestParam String category, @RequestParam String code_close,
-                           @RequestParam String status, @RequestParam String hard,
-                           Model model) {
+                               @RequestParam String category, @RequestParam String code_close,
+                               @RequestParam String status, @RequestParam String hard,
+                               Model model) {
         EditTaskRequestDto requestDto = EditTaskRequestDto.builder()
                 .task_number(task_numbers)
                 .business(business)
@@ -52,12 +49,11 @@ public class EditTaskController {
                 model);
     }
 
-    //Открываем страницу просмотра отредактированной заявки ***********************************
     @PostMapping("/open")
     public String openTask(@RequestParam String task_number,
                            Model model) {
-       return editTaskService.openEditTask(
-               task_number,
-               model);
+        return editTaskService.openEditTask(
+                task_number,
+                model);
     }
 }

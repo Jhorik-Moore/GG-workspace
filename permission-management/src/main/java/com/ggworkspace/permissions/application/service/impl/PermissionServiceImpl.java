@@ -3,11 +3,12 @@ package com.ggworkspace.permissions.application.service.impl;
 import com.ggworkspace.permissions.application.repository.PermissionRepository;
 import com.ggworkspace.permissions.application.service.PermissionService;
 import com.ggworkspace.permissions.domain.dto.EmpoyeeRequestDto;
-import com.ggworkspace.permissions.domain.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,8 +17,8 @@ public class PermissionServiceImpl implements PermissionService {
     private final PermissionRepository permissionRepository;
 
     @Override
-    public Employee getPermission(final String login) {
-        return permissionRepository.findByLogin(login);
+    public Optional<Employee> getPermission(final String login) {
+        return Optional.ofNullable(permissionRepository.findByLogin(login));
     }
 
     @Override

@@ -1,15 +1,17 @@
-package com.ggworkspace.permissions.domain.entity;
+package com.ggworkspace.permissions.domain.model.entity;
 
+import com.ggworkspace.permissions.domain.model.Role;
 import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
@@ -18,10 +20,12 @@ public class Employee {
     private Long id;
     @Column(name = "login", nullable = false)
     private String login;
+    @Column(name = "password")
+    private String password;
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
-    private String role;
+    private Role role;
     @Column(name = "status")
     private String status;
-
 
 }

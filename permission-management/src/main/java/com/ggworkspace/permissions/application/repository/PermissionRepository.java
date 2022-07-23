@@ -1,7 +1,8 @@
 package com.ggworkspace.permissions.application.repository;
 
-import com.ggworkspace.permissions.domain.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface PermissionRepository
-        extends JpaRepository<Employee, Long> {
+        extends JpaRepository<Employee, Long>, JpaSpecificationExecutor<Employee> {
 
     String GET_PERMISSION_BY_LOGIN = "SELECT * FROM public.employee WHERE employee.login = :login";
     String UPDATE_PERMISSION_BY_LOGIN = "UPDATE public.employee SET role = :role, status = :status WHERE login = :login";

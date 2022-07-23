@@ -1,19 +1,18 @@
 package com.ggworkspace.admin.adapter.controllers;
 
 import com.ggworkspace.admin.application.service.PermissionService;
-import com.ggworkspace.admin.domain.request.dto.SaveTaskRequestDto;
 import com.ggworkspace.admin.application.service.SaveTaskService;
+import com.ggworkspace.admin.domain.request.dto.SaveTaskRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.security.Principal;
 
 @Slf4j
 @Controller
@@ -27,17 +26,15 @@ public class MainController {
 
     private final SaveTaskService saveTaskService;
     private final PermissionService permissionService;
-    private static final String MAIN = "main";
 
-    // Открываем главную страницу админки*************************
     @GetMapping
-    public String openMainMenu(Model model, Principal principal) {
+    public String openMainMenu(Model model,
+                               Authentication authentication) {
         model.addAttribute("title", "Работа над заявкой");
         return permissionService
-                .inDepthVerification(MAIN ,principal);
+                .inDepthVerificationMain(authentication);
     }
 
-    //Сохраняем изменния ********************************************
     @PostMapping("/task_save")
     public String saveTask(@RequestParam String status, @RequestParam String hard,
                            @RequestParam String category, @RequestParam String business,

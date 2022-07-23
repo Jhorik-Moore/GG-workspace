@@ -1,6 +1,6 @@
 package com.ggworkspace.admin.application.service;
 
-import java.security.Principal;
+import org.springframework.security.core.Authentication;
 
 public interface PermissionService {
 
@@ -8,5 +8,7 @@ public interface PermissionService {
     String HOME_OPER = "home-oper";
     String EDIT_TASK = "edit-task";
 
-    String inDepthVerification(String option, Principal principal);
+    String inDepthVerificationMain(Authentication authentication);
+
+    String inDepthVerificationEdit(Authentication authentication);
 }
