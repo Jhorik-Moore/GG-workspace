@@ -1,5 +1,7 @@
 package com.ggworkspace.admin.application.service;
 
+
+import com.ggworkspace.permissions.domain.model.Status;
 import com.ggworkspace.permissions.domain.model.entity.Employee;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -59,10 +61,10 @@ public class UserDetail implements UserDetails {
         return new User(
                 employee.getLogin(),
                 employee.getPassword(),
-                true,
-                true,
-                true,
-                true,
+                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
                 employee.getRole().getAuthorities()
         );
     }
