@@ -35,8 +35,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return UserDetail.getEmployee(
-                getUserPermissionsByLogin(login));
+        return UserDetail.getEmployeeRoles(getUserPermissionsByLogin(login));
     }
 
     private EmployeeRoles getUserPermissionsByLogin(final String login) {

@@ -24,14 +24,15 @@ public class EmployeeRoles
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "login")
-    private String login;
+
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "password", referencedColumnName = "password")
+    @JoinColumn(name = "login", referencedColumnName = "login")
     private Employee employee;
+
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
     @Column(name = "status")
     private String status;
 

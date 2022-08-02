@@ -25,8 +25,10 @@ public class Employee
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Column(name = "login", nullable = false)
     private String login;
+
     @Column(name = "password")
     private String password;
 

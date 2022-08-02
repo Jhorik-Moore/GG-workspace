@@ -57,9 +57,9 @@ public class UserDetail implements UserDetails {
         return isActive;
     }
 
-    public static UserDetails getEmployee(EmployeeRoles employeeRoles) {
+    public static UserDetails getEmployeeRoles(EmployeeRoles employeeRoles) {
         return new User(
-                employeeRoles.getLogin(),
+                employeeRoles.getEmployee().getLogin(),
                 employeeRoles.getEmployee().getPassword(),
                 employeeRoles.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
                 employeeRoles.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
