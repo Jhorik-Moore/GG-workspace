@@ -2,7 +2,7 @@ package com.ggworkspace.admin.application.service;
 
 
 import com.ggworkspace.permissions.domain.model.Status;
-import com.ggworkspace.permissions.domain.model.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.EmployeeRoles;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -57,15 +57,15 @@ public class UserDetail implements UserDetails {
         return isActive;
     }
 
-    public static UserDetails getEmployee(Employee employee) {
+    public static UserDetails getEmployee(EmployeeRoles employeeRoles) {
         return new User(
-                employee.getLogin(),
-                employee.getPassword(),
-                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
-                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
-                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
-                employee.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
-                employee.getRole().getAuthorities()
+                employeeRoles.getLogin(),
+                employeeRoles.getEmployee().getPassword(),
+                employeeRoles.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employeeRoles.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employeeRoles.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employeeRoles.getStatus().equalsIgnoreCase(String.valueOf(Status.ACTIVE)),
+                employeeRoles.getRole().getAuthorities()
         );
     }
 }

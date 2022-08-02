@@ -1,6 +1,6 @@
 package com.ggworkspace.permissions.application.repository;
 
-import com.ggworkspace.permissions.domain.model.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.EmployeeRoles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,16 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface PermissionRepository
-        extends JpaRepository<Employee, Long>, JpaSpecificationExecutor<Employee> {
+        extends JpaRepository<EmployeeRoles, Long>, JpaSpecificationExecutor<EmployeeRoles> {
 
-    String GET_PERMISSION_BY_LOGIN = "SELECT * FROM public.employee WHERE employee.login = :login";
-    String UPDATE_PERMISSION_BY_LOGIN = "UPDATE public.employee SET role = :role, status = :status WHERE login = :login";
-    String DELETE_PERMISSION_BY_LOGIN = "DELETE  FROM public.employee WHERE employee.login = :login";
-    String ADD_PERMISSION = "INSERT INTO public.employee VALUES (?, ?, ?)";
+    String GET_PERMISSION_BY_LOGIN = "SELECT * FROM public.employee_roles WHERE employee_roles.login = :login";
+    String UPDATE_PERMISSION_BY_LOGIN = "UPDATE public.employee_roles SET role = :role, status = :status WHERE login = :login";
+    String DELETE_PERMISSION_BY_LOGIN = "DELETE  FROM public.employee_roles WHERE employee_roles.login = :login";
+    String ADD_PERMISSION = "INSERT INTO public.employee_roles VALUES (?, ?, ?)";
 
 
     @Query(value = GET_PERMISSION_BY_LOGIN, nativeQuery = true)
-    Employee findByLogin(@Param(value = "login") String login);
+    EmployeeRoles findByLogin(@Param(value = "login") String login);
 
     @Transactional
     @Modifying

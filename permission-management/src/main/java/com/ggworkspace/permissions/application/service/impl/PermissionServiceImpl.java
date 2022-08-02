@@ -3,7 +3,7 @@ package com.ggworkspace.permissions.application.service.impl;
 import com.ggworkspace.permissions.application.repository.PermissionRepository;
 import com.ggworkspace.permissions.application.service.PermissionService;
 import com.ggworkspace.permissions.domain.dto.EmpoyeeRequestDto;
-import com.ggworkspace.permissions.domain.model.entity.Employee;
+import com.ggworkspace.permissions.domain.model.entity.EmployeeRoles;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +17,12 @@ public class PermissionServiceImpl implements PermissionService {
     private final PermissionRepository permissionRepository;
 
     @Override
-    public Optional<Employee> getPermission(final String login) {
-        return Optional.ofNullable(permissionRepository.findByLogin(login));
+    public Optional<EmployeeRoles> getPermission(final String login) {
+        return Optional.ofNullable(permissionRepository.findByLogin(login.toUpperCase()));
     }
 
     @Override
-    public List<Employee> getAll() {
+    public List<EmployeeRoles> getAll() {
         return permissionRepository.findAll();
     }
 
@@ -73,8 +73,11 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     private boolean isLoginAlreadyExist(final String login) {
-        return permissionRepository.findAll().stream()
-                .anyMatch(employee -> employee.getLogin().equals(login));
+        return permissionRepository.findAll()
+                .stream()
+                .anyMatch(employee -> employee
+                        .getEmployee()
+                        .getLogin().equals(login));
     }
 
     @Override

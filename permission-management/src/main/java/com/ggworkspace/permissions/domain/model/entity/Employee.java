@@ -1,18 +1,25 @@
 package com.ggworkspace.permissions.domain.model.entity;
 
-import com.ggworkspace.permissions.domain.model.Role;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "employee")
-public class Employee {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Employee
+        implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 7948164952340995968L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +29,5 @@ public class Employee {
     private String login;
     @Column(name = "password")
     private String password;
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "role")
-    private Role role;
-    @Column(name = "status")
-    private String status;
 
 }
