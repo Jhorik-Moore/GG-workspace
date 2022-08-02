@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <link rel="shortcut icon"
+          href="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-07-18/WJuqzmouTkgf-67W34bA/kisspng-ethereum-classic-blockchain-decentralized-applicat-ethereum-classic-etc-inspires-investment-compani-5c5a6f71196a09.4533405815494306411041.png"
+          type="image/png">
+    <title th:text="${title}"/>
+    <header class="bd-header bg-dark py-2 d-flex align-items-stretch border-bottom border-dark">
+        <div class="container-fluid d-flex align-items-center">
+            <h1 class="d-flex align-items-center fs-4 text-white mb-2">
+                <img src="https://cdn.liqpay.ua/userfiles/c/i14778026796/2021-08-16/kMsFZ7egpA0Xzd1RAPs4/FmC0gdD8qI.png"
+                     width="40" height="32" class="me-3" alt="Работа над заявками">
+                Редактирование заявки
+            </h1>
+            <a href="http://localhost:2323/workspace.task.ua/" class="ms-auto link-light" hreflang="ar">Главная</a>
+        </div>
+
+    </header>
+    <style>
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        colortext {
+            color: white;
+        }
+
+        .field {
+            clear: both;
+            text-align: left;
+            line-height: 10px;
+            float: left;
+        }
+
+        #instruct {
+            background: #202B29;
+            border-radius: 20px;
+            position: fixed;
+            width: 750px;
+            padding: 20px;
+            margin: 5px;
+            height: 150px;
+            box-shadow: 5px 5px 5px 5px #4C5654;
+            left: 600px;
+
+
+        }
+
+        label {
+            border-radius: 3px;
+            border: #a6a6a6;
+            float: left;
+            width: 270px;
+            padding: 20px;
+            margin: 5px;
+            height: 5px;
+            background-color: #efefef;
+            opacity: 0.8;
+            color: black;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        label:hover {
+            border-radius: 3px;
+            float: left;
+            background: #139abf;
+            color: white;
+            transform: translate(5px);
+            transform: scale(1.01);
+            opacity: 0.99;
+            transition-duration: .3s;
+            width: 270px;
+        }
+
+        #text_instruct {
+            background: transparent;
+            color: #05dbebb6;
+        }
+
+        input {
+            float: left;
+            border-radius: 3px;
+            width: 250px;
+            padding: 20px;
+            margin: 5px;
+            height: 5px;
+            background-color: #efefef;
+            opacity: 0.7;
+            color: black;
+        }
+
+        input:hover {
+            float: left;
+            border-radius: 3px;
+            background: #139abf;
+            color: white;
+            transform: translate(-5px);
+            opacity: 0.99;
+            transition-duration: .3s;
+            width: 255px;
+        }
+
+        button {
+            border-radius: 10px;
+            font: bold 1.3em Arial, Tahome, sans-serif;
+            float: center;
+            color: white;
+            padding: 20px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            position: fixed;
+            left: 870px;
+            top: 300px;
+            background: #4f5b66;
+            border: 1px solid #ded7d7;
+            opacity: 0.7;
+            -webkit-transition: 1s ease; /* Safari and Chrome */
+            -moz-transition: 1s ease; /* Firefox 4 */
+            -o-transition: 1s ease; /* Opera */
+        }
+
+        button:hover {
+            font-size: 17px;
+            transition-duration: .4s;
+            color: white;
+            background: black;
+            box-shadow: 5px 5px 5px #139abf;
+            border
+            opacity: 0.99;
+        }
+
+
+    </style>
+</head>
+<body style="background-color:#5F6C6A">
+<div class="header" id="title">
+</div>
+<hr>
+<div class="main" id="main">
+    <div class="menu">
+
+        <form action="/workspace.task.ua/edit_task" method="POST">
+
+            <div class="field" id="id">
+                <label for="id" id="task">ID ЗАЯВКИ</label>
+                <input type="text" id="id" placeholder="ID ЗАЯВКИ" name="task_numbers" autocomplete="off" required>
+            </div>
+
+            <div>
+                <fieldset id="instruct">
+                    <p align="center" id="text_instruct"><b>Для редактирования заявки выберите необходимые значения в
+                        боковом меню и нажмите кнопку "ОТПРАВИТЬ"</b></p>
+                </fieldset>
+            </div>
+
+
+            <div class="field">
+                <label for="bus">БИЗНЕС</label>
+                <input list="БИЗНЕС" id="bus" name="business" autocomplete="off" required>
+                <datalist id="БИЗНЕС">
+
+                    <option value="Продукты МСБ">
+                    <option value="Кредитные карты">
+                    <option value="Другое">
+                    <option value="Общая консультация">
+                    <option value="VIP-бизнес">
+                    <option value="Информационные технологии">
+                    <option value="Центр электронного бизнеса">
+                    <option value="Бизнес индивидуальных VIP клиентов">
+                    <option value="Ипотечный бизнес">
+                    <option value="Малый и средний бизнес">
+                    <option value="Оплата Частями">
+                    <option value="ТСО">
+                    <option value="Центр страхового бизнеса">
+                    <option value="Центр продажи билетов">
+                    <option value="Бизнес платежей и переводов">
+                    <option value="Swift переводы">
+                </datalist>
+            </div>
+            <div class="field">
+                <label for="cat">КАТЕГОРИЯ</label>
+                <input list="КАТЕГОРИЯ" id="cat" name="category" autocomplete="off" required>
+                <datalist id="КАТЕГОРИЯ">
+                    <option value="Инцидент">
+                    <option value="Запрос на информацию">
+                    <option value="Жалоба">
+                    <option value="Решено с привлечением бизнеса">
+                    <option value="Инцидент по вине банка">
+                </datalist>
+            </div>
+
+
+            <div class="field">
+                <label for="codecl">КОД ЗАКРЫТИЯ</label>
+                <input list="КОД ЗАКРЫТИЯ" id="codecl" name="code_close" autocomplete="off" required>
+                <datalist id="КОД ЗАКРЫТИЯ">
+                    <option value="Неактуальный вопрос">
+                    <option value="Закрыт стандартной фразой">
+                    <option value="Повторное обращение (успешный звонок)">
+                    <option value="Закрыто роботом">
+                    <option value="Коммуникация не требуется">
+                    <option value="Коммуникация по звонку">
+                    <option value="Повторное обращение">
+                    <option value="Заявка обработана">
+                    <option value="Вопрос снят пользователем">
+                    <option value="Массовая проблема">
+                    <option value="Акции Бонус Плюс">
+                    <option value="Апелляция одобрена">
+                    <option value="Исправлено">
+                    <option value="Не возможно исправить">
+                    <option value="Необоснованный возврат">
+                    <option value="Выставлен контроль">
+                    <option value="Известная проблема HD">
+                    <option value="Уточнение данных">
+                    <option value="Решено с созданием WO">
+                    <option value="Решено без созданием WO">
+                    <option value="Одобрено">
+                    <option value="Отказ">
+                    <option value="Решено">
+                    <option value="Нет решения">
+                    <option value="Невозможно воспроизвести">
+                    <option value="В учете отказано">
+                    <option value="Повторное обращение (недозвон)">
+                    <option value="Успешный звoнoк клиенту">
+                    <option value="С привлечением специалистов бизнеса/направлений">
+                    <option value="Не полезно (не применимо на уровне ОЦ)">
+                    <option value="Отправлено SMS">
+                    <option value="Решена - Проблема не подтверждена">
+                    <option value="Недозвон">
+                </datalist>
+            </div>
+
+            <div id="btn">
+                <button onclick="nrAnswer();">ОТПРАВИТЬ</button>
+            </div>
+
+            <div class="field">
+                <label for="stat">СТАТУС ЗАЯВКИ</label>
+                <input list="СТАТУС ЗАЯВКИ" id="stat" name="status" autocomplete="off" required>
+                <datalist id="СТАТУС ЗАЯВКИ">
+                    <option value="В работе">
+                    <option value="Выполнена">
+                    <option value="Закрыта">
+                    <option value="Ордер">
+                    <option value="Новая">
+                    <option value="Уточнение данных">
+                    <option value="Переведена">
+                    <option value="Забракована">
+                </datalist>
+            </div>
+
+            <div class="field">
+                <label for="hard">СЛОЖНОСТЬ</label>
+                <input list="СЛОЖНОСТЬ" id="hard" name="hard" autocomplete="off" required>
+                <datalist id="СЛОЖНОСТЬ">
+                    <option value="Редактирование данных">
+                    <option value="Консультация">
+                    <option value="Техническая проблема">
+                    <option value="Технологическая недоработка">
+                    <option value="Ордер на поддержку">
+                    <option value="Претензия одобрена">
+                    <option value="В претензии отказано">
+                </datalist>
+            </div>
+        </form>
+
+        <script>
+
+            btn.onclick = function nrAnswer() {
+                alert(`                                           Внимание!
+     При внесении более 1 номера заявки - настройки будут едины для всего списка.
+     Между заявками ОБЯЗАТЕЛЬНО ставим "," В начале и конце списка заявок "," НЕ СТАВИМ.
+     Не рекомендуется вносить более 50 заявок за 1 раз.
+                Если все корректно - жмём ОК, если нет - F5`);
+
+
+            }
+
+        </script>
+</body>
+</html>
